@@ -14,7 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestStage {
-
     private UUID uuid;
 
     private String description;

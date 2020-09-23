@@ -16,7 +16,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Request {
-
     private UUID uuid;
 
     private String subject;

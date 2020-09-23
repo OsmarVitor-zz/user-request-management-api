@@ -1,5 +1,6 @@
 package com.user.managementuserapi.domain;
 
+import com.user.managementuserapi.domain.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class User {
     private String email;
 
     private String password;
+
+    private Role role;
 
     private List<Request> requestList = new ArrayList<Request>();
 
