@@ -6,6 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,18 +27,33 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "request")
 public class Request {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
 
+    @Column(nullable = false)
     private String subject;
 
+    @Column(nullable = false)
     private String description;
 
+    @Column(name = "created_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private RequestState state;
 
+    @ManyToOne
+    @JoinColumn(name = "user_uuid", nullable = false)
     private User user;
 
+    @OneToMany(mappedBy = "request")
     private List<RequestStage> requestStages = new ArrayList<RequestStage>();
 }
