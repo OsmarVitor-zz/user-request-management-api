@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +26,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "request_stage")
-public class RequestStage {
+public class RequestStage implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
