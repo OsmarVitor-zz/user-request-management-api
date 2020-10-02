@@ -11,7 +11,8 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    @Query("SELECT FROM User WHERE email = ?1 AND password = ?2")
+    @Query(value = "SELECT * FROM users WHERE email = ?1 AND password = ?2",
+            nativeQuery = true)
     public Optional<User> login(String email, String password);
 
 }

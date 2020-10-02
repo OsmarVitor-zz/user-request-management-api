@@ -14,7 +14,7 @@ public interface RequestRepository extends JpaRepository<Request, UUID> {
 
     public List<Request> findAllByUserUuid(UUID uuid);
 
-    @Query("UPDATE Request SET state = ?1 WHERE uuid = ?2")
+    @Query("UPDATE request SET state = ?1 WHERE uuid = ?2")
     public Request updateRequestStage(RequestState requestState, UUID uuid);
 
 }
